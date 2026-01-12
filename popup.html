@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      width: 300px;
+      background: #f5f5f5;
+    }
+    .header {
+      background: #6264a7;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .header .chat-name {
+      font-size: 12px;
+      opacity: 0.9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .body {
+      padding: 15px;
+    }
+    .status {
+      background: white;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      font-size: 12px;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+    }
+    .status.error {
+      background: #ffebee;
+      border-color: #ef5350;
+      color: #c62828;
+    }
+    .status.success {
+      background: #e8f5e9;
+      border-color: #66bb6a;
+      color: #2e7d32;
+    }
+    .count {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .count-number {
+      font-size: 36px;
+      font-weight: bold;
+      color: #6264a7;
+    }
+    .count-label {
+      font-size: 11px;
+      color: #666;
+    }
+    .section {
+      margin-bottom: 15px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    button {
+      background: #6264a7;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.1s;
+      flex: 1;
+      min-width: 80px;
+    }
+    button:hover {
+      background: #4b4d8c;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    button.secondary {
+      background: #e0e0e0;
+      color: #333;
+    }
+    button.secondary:hover {
+      background: #d0d0d0;
+    }
+    button.full-width {
+      width: 100%;
+      flex: none;
+    }
+    .help {
+      font-size: 10px;
+      color: #999;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .footer {
+      background: #e8e8e8;
+      padding: 8px;
+      text-align: center;
+      font-size: 10px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Teams Chat Export</h1>
+    <div class="chat-name" id="chatName">Loading...</div>
+  </div>
+
+  <div class="body">
+    <div class="status" id="status">Checking Teams page...</div>
+
+    <div class="count">
+      <div class="count-number" id="messageCount">0</div>
+      <div class="count-label">messages found</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Step 1: Load Messages</div>
+      <div class="btn-group">
+        <button id="scrollBtn">Scroll to Top</button>
+        <button id="refreshBtn" class="secondary">Refresh</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Step 2: Export</div>
+      <div class="btn-group">
+        <button id="exportHtml">HTML</button>
+        <button id="exportTxt">Text</button>
+        <button id="exportJson">JSON</button>
+        <button id="exportCsv">CSV</button>
+      </div>
+    </div>
+
+    <div class="help">
+      Scroll to top to load older messages before exporting
+    </div>
+  </div>
+
+  <div class="footer">
+    Works with teams.microsoft.com
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
